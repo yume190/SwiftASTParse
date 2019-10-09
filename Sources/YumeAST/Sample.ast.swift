@@ -8,7 +8,7 @@ let sample = """
         (integer_literal_expr type='Int' location=/Users/yume/git/TypeFill/example/sample.swift:2:9 range=[/Users/yume/git/TypeFill/example/sample.swift:2:9 - line:2:9] value=1 builtin_initializer=Swift.(file).Int.init(_builtinIntegerLiteral:) initializer=**NULL**))
 ))
   (var_decl range=[/Users/yume/git/TypeFill/example/sample.swift:2:5 - line:2:5] "a" type='Int' interface type='Int' access=internal let readImpl=stored immutable)
-  (class_decl range=[/Users/yume/git/TypeFill/example/sample.swift:3:1 - line:34:1] "A" interface type='A.Type' access=internal @objc non-resilient inherits: UIViewController
+  (class_decl range=[/Users/yume/git/TypeFill/example/sample.swift:3:1 - line:46:1] "A" interface type='A.Type' access=internal @objc non-resilient inherits: UIViewController
     (pattern_binding_decl range=[/Users/yume/git/TypeFill/example/sample.swift:4:25 - line:4:43]
       (pattern_typed type='UIButton?'
         (pattern_named type='UIButton?' 'btn1')
@@ -17,7 +17,7 @@ let sample = """
         (declref_expr implicit type='(UIButton?.Type) -> UIButton?' decl=Swift.(file).Optional.none [with (substitution_map generic_signature=<Wrapped> (substitution Wrapped -> UIButton))] function_ref=unapplied)
         (type_expr implicit type='UIButton?.Type' typerepr='<<NULL>>')))
     (var_decl range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29] "btn1" type='UIButton?' interface type='UIButton?' access=open @objc readImpl=stored writeImpl=stored readWriteImpl=stored
-      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29] 'anonname=0x7fb468c8db70' interface type='(A) -> () -> UIButton?' access=open @objc get_for=btn1
+      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29] 'anonname=0x7fd96c126948' interface type='(A) -> () -> UIButton?' access=open @objc get_for=btn1
         (parameter "self" interface type='A')
         (parameter_list)
         (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29]
@@ -25,7 +25,7 @@ let sample = """
             (load_expr implicit type='UIButton?'
               (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn1@/Users/yume/git/TypeFill/example/sample.swift:4:29 direct_to_storage
                 (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:4:29 function_ref=unapplied))))))
-      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29] 'anonname=0x7fb468c8dd58' interface type='(A) -> (UIButton?) -> ()' access=open @objc set_for=btn1
+      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29] 'anonname=0x7fd96c126b30' interface type='(A) -> (UIButton?) -> ()' access=open @objc set_for=btn1
         (parameter "self" interface type='A')
         (parameter_list
           (parameter "value" interface type='UIButton?') range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29])
@@ -34,7 +34,7 @@ let sample = """
             (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn1@/Users/yume/git/TypeFill/example/sample.swift:4:29 direct_to_storage
               (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:4:29 function_ref=unapplied))
             (declref_expr implicit type='UIButton?' decl=sample.(file).A.<anonymous>.value@/Users/yume/git/TypeFill/example/sample.swift:4:29 function_ref=unapplied))))
-      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29] 'anonname=0x7fb468c90120' interface type='(A) -> () -> ()' access=open _modify_for=btn1
+      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29] 'anonname=0x7fd96c128ef8' interface type='(A) -> () -> ()' access=open _modify_for=btn1
         (parameter "self" interface type='A')
         (parameter_list)
         (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29]
@@ -42,7 +42,7 @@ let sample = """
             (inout_expr implicit type='inout UIButton?'
               (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn1@/Users/yume/git/TypeFill/example/sample.swift:4:29 direct_to_impl
                 (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:4:29 function_ref=unapplied)))))))
-    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29] 'anonname=0x7fb468c8db70' interface type='(A) -> () -> UIButton?' access=open @objc get_for=btn1
+    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29] 'anonname=0x7fd96c126948' interface type='(A) -> () -> UIButton?' access=open @objc get_for=btn1
       (parameter "self" interface type='A')
       (parameter_list)
       (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29]
@@ -50,7 +50,7 @@ let sample = """
           (load_expr implicit type='UIButton?'
             (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn1@/Users/yume/git/TypeFill/example/sample.swift:4:29 direct_to_storage
               (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:4:29 function_ref=unapplied))))))
-    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29] 'anonname=0x7fb468c8dd58' interface type='(A) -> (UIButton?) -> ()' access=open @objc set_for=btn1
+    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29] 'anonname=0x7fd96c126b30' interface type='(A) -> (UIButton?) -> ()' access=open @objc set_for=btn1
       (parameter "self" interface type='A')
       (parameter_list
         (parameter "value" interface type='UIButton?') range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29])
@@ -59,7 +59,7 @@ let sample = """
           (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn1@/Users/yume/git/TypeFill/example/sample.swift:4:29 direct_to_storage
             (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:4:29 function_ref=unapplied))
           (declref_expr implicit type='UIButton?' decl=sample.(file).A.<anonymous>.value@/Users/yume/git/TypeFill/example/sample.swift:4:29 function_ref=unapplied))))
-    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29] 'anonname=0x7fb468c90120' interface type='(A) -> () -> ()' access=open _modify_for=btn1
+    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29] 'anonname=0x7fd96c128ef8' interface type='(A) -> () -> ()' access=open _modify_for=btn1
       (parameter "self" interface type='A')
       (parameter_list)
       (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:4:29 - line:4:29]
@@ -75,7 +75,7 @@ let sample = """
         (declref_expr implicit type='(UIButton?.Type) -> UIButton?' decl=Swift.(file).Optional.none [with (substitution_map generic_signature=<Wrapped> (substitution Wrapped -> UIButton))] function_ref=unapplied)
         (type_expr implicit type='UIButton?.Type' typerepr='<<NULL>>')))
     (var_decl range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31] "btn2" type='UIButton?' interface type='UIButton?' access=public @objc readImpl=stored writeImpl=stored readWriteImpl=stored
-      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31] 'anonname=0x7fb468c92198' interface type='(A) -> () -> UIButton?' access=public @objc get_for=btn2
+      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31] 'anonname=0x7fd96c14c7c0' interface type='(A) -> () -> UIButton?' access=public @objc get_for=btn2
         (parameter "self" interface type='A')
         (parameter_list)
         (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31]
@@ -83,7 +83,7 @@ let sample = """
             (load_expr implicit type='UIButton?'
               (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn2@/Users/yume/git/TypeFill/example/sample.swift:5:31 direct_to_storage
                 (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:5:31 function_ref=unapplied))))))
-      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31] 'anonname=0x7fb468c92380' interface type='(A) -> (UIButton?) -> ()' access=public @objc set_for=btn2
+      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31] 'anonname=0x7fd96c14c9a8' interface type='(A) -> (UIButton?) -> ()' access=public @objc set_for=btn2
         (parameter "self" interface type='A')
         (parameter_list
           (parameter "value" interface type='UIButton?') range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31])
@@ -92,7 +92,7 @@ let sample = """
             (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn2@/Users/yume/git/TypeFill/example/sample.swift:5:31 direct_to_storage
               (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:5:31 function_ref=unapplied))
             (declref_expr implicit type='UIButton?' decl=sample.(file).A.<anonymous>.value@/Users/yume/git/TypeFill/example/sample.swift:5:31 function_ref=unapplied))))
-      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31] 'anonname=0x7fb468c92488' interface type='(A) -> () -> ()' access=public _modify_for=btn2
+      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31] 'anonname=0x7fd96c14cab0' interface type='(A) -> () -> ()' access=public _modify_for=btn2
         (parameter "self" interface type='A')
         (parameter_list)
         (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31]
@@ -100,7 +100,7 @@ let sample = """
             (inout_expr implicit type='inout UIButton?'
               (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn2@/Users/yume/git/TypeFill/example/sample.swift:5:31 direct_to_impl
                 (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:5:31 function_ref=unapplied)))))))
-    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31] 'anonname=0x7fb468c92198' interface type='(A) -> () -> UIButton?' access=public @objc get_for=btn2
+    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31] 'anonname=0x7fd96c14c7c0' interface type='(A) -> () -> UIButton?' access=public @objc get_for=btn2
       (parameter "self" interface type='A')
       (parameter_list)
       (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31]
@@ -108,7 +108,7 @@ let sample = """
           (load_expr implicit type='UIButton?'
             (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn2@/Users/yume/git/TypeFill/example/sample.swift:5:31 direct_to_storage
               (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:5:31 function_ref=unapplied))))))
-    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31] 'anonname=0x7fb468c92380' interface type='(A) -> (UIButton?) -> ()' access=public @objc set_for=btn2
+    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31] 'anonname=0x7fd96c14c9a8' interface type='(A) -> (UIButton?) -> ()' access=public @objc set_for=btn2
       (parameter "self" interface type='A')
       (parameter_list
         (parameter "value" interface type='UIButton?') range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31])
@@ -117,7 +117,7 @@ let sample = """
           (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn2@/Users/yume/git/TypeFill/example/sample.swift:5:31 direct_to_storage
             (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:5:31 function_ref=unapplied))
           (declref_expr implicit type='UIButton?' decl=sample.(file).A.<anonymous>.value@/Users/yume/git/TypeFill/example/sample.swift:5:31 function_ref=unapplied))))
-    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31] 'anonname=0x7fb468c92488' interface type='(A) -> () -> ()' access=public _modify_for=btn2
+    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31] 'anonname=0x7fd96c14cab0' interface type='(A) -> () -> ()' access=public _modify_for=btn2
       (parameter "self" interface type='A')
       (parameter_list)
       (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:5:31 - line:5:31]
@@ -133,7 +133,7 @@ let sample = """
         (declref_expr implicit type='(UIButton?.Type) -> UIButton?' decl=Swift.(file).Optional.none [with (substitution_map generic_signature=<Wrapped> (substitution Wrapped -> UIButton))] function_ref=unapplied)
         (type_expr implicit type='UIButton?.Type' typerepr='<<NULL>>')))
     (var_decl range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33] "btn3" type='UIButton?' interface type='UIButton?' access=internal @objc readImpl=stored writeImpl=stored readWriteImpl=stored
-      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33] 'anonname=0x7fb468c926c8' interface type='(A) -> () -> UIButton?' access=internal @objc get_for=btn3
+      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33] 'anonname=0x7fd96c14ccf0' interface type='(A) -> () -> UIButton?' access=internal @objc get_for=btn3
         (parameter "self" interface type='A')
         (parameter_list)
         (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33]
@@ -141,7 +141,7 @@ let sample = """
             (load_expr implicit type='UIButton?'
               (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn3@/Users/yume/git/TypeFill/example/sample.swift:6:33 direct_to_storage
                 (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:6:33 function_ref=unapplied))))))
-      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33] 'anonname=0x7fb468c928b0' interface type='(A) -> (UIButton?) -> ()' access=internal @objc set_for=btn3
+      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33] 'anonname=0x7fd96c14ced8' interface type='(A) -> (UIButton?) -> ()' access=internal @objc set_for=btn3
         (parameter "self" interface type='A')
         (parameter_list
           (parameter "value" interface type='UIButton?') range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33])
@@ -150,7 +150,7 @@ let sample = """
             (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn3@/Users/yume/git/TypeFill/example/sample.swift:6:33 direct_to_storage
               (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:6:33 function_ref=unapplied))
             (declref_expr implicit type='UIButton?' decl=sample.(file).A.<anonymous>.value@/Users/yume/git/TypeFill/example/sample.swift:6:33 function_ref=unapplied))))
-      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33] 'anonname=0x7fb468c929b8' interface type='(A) -> () -> ()' access=internal _modify_for=btn3
+      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33] 'anonname=0x7fd96c14cfe0' interface type='(A) -> () -> ()' access=internal _modify_for=btn3
         (parameter "self" interface type='A')
         (parameter_list)
         (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33]
@@ -158,7 +158,7 @@ let sample = """
             (inout_expr implicit type='inout UIButton?'
               (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn3@/Users/yume/git/TypeFill/example/sample.swift:6:33 direct_to_impl
                 (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:6:33 function_ref=unapplied)))))))
-    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33] 'anonname=0x7fb468c926c8' interface type='(A) -> () -> UIButton?' access=internal @objc get_for=btn3
+    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33] 'anonname=0x7fd96c14ccf0' interface type='(A) -> () -> UIButton?' access=internal @objc get_for=btn3
       (parameter "self" interface type='A')
       (parameter_list)
       (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33]
@@ -166,7 +166,7 @@ let sample = """
           (load_expr implicit type='UIButton?'
             (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn3@/Users/yume/git/TypeFill/example/sample.swift:6:33 direct_to_storage
               (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:6:33 function_ref=unapplied))))))
-    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33] 'anonname=0x7fb468c928b0' interface type='(A) -> (UIButton?) -> ()' access=internal @objc set_for=btn3
+    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33] 'anonname=0x7fd96c14ced8' interface type='(A) -> (UIButton?) -> ()' access=internal @objc set_for=btn3
       (parameter "self" interface type='A')
       (parameter_list
         (parameter "value" interface type='UIButton?') range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33])
@@ -175,7 +175,7 @@ let sample = """
           (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn3@/Users/yume/git/TypeFill/example/sample.swift:6:33 direct_to_storage
             (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:6:33 function_ref=unapplied))
           (declref_expr implicit type='UIButton?' decl=sample.(file).A.<anonymous>.value@/Users/yume/git/TypeFill/example/sample.swift:6:33 function_ref=unapplied))))
-    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33] 'anonname=0x7fb468c929b8' interface type='(A) -> () -> ()' access=internal _modify_for=btn3
+    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33] 'anonname=0x7fd96c14cfe0' interface type='(A) -> () -> ()' access=internal _modify_for=btn3
       (parameter "self" interface type='A')
       (parameter_list)
       (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:6:33 - line:6:33]
@@ -191,7 +191,7 @@ let sample = """
         (declref_expr implicit type='(UIButton?.Type) -> UIButton?' decl=Swift.(file).Optional.none [with (substitution_map generic_signature=<Wrapped> (substitution Wrapped -> UIButton))] function_ref=unapplied)
         (type_expr implicit type='UIButton?.Type' typerepr='<<NULL>>')))
     (var_decl range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36] "btn4" type='UIButton?' interface type='UIButton?' access=fileprivate @objc readImpl=stored writeImpl=stored readWriteImpl=stored
-      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36] 'anonname=0x7fb468c92bf8' interface type='(A) -> () -> UIButton?' access=fileprivate @objc get_for=btn4
+      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36] 'anonname=0x7fd96c14d220' interface type='(A) -> () -> UIButton?' access=fileprivate @objc get_for=btn4
         (parameter "self" interface type='A')
         (parameter_list)
         (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36]
@@ -199,7 +199,7 @@ let sample = """
             (load_expr implicit type='UIButton?'
               (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn4@/Users/yume/git/TypeFill/example/sample.swift:7:36 direct_to_storage
                 (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:7:36 function_ref=unapplied))))))
-      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36] 'anonname=0x7fb468c92de0' interface type='(A) -> (UIButton?) -> ()' access=fileprivate @objc set_for=btn4
+      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36] 'anonname=0x7fd96c14d408' interface type='(A) -> (UIButton?) -> ()' access=fileprivate @objc set_for=btn4
         (parameter "self" interface type='A')
         (parameter_list
           (parameter "value" interface type='UIButton?') range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36])
@@ -208,7 +208,7 @@ let sample = """
             (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn4@/Users/yume/git/TypeFill/example/sample.swift:7:36 direct_to_storage
               (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:7:36 function_ref=unapplied))
             (declref_expr implicit type='UIButton?' decl=sample.(file).A.<anonymous>.value@/Users/yume/git/TypeFill/example/sample.swift:7:36 function_ref=unapplied))))
-      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36] 'anonname=0x7fb468c92ee8' interface type='(A) -> () -> ()' access=fileprivate _modify_for=btn4
+      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36] 'anonname=0x7fd96c14d510' interface type='(A) -> () -> ()' access=fileprivate _modify_for=btn4
         (parameter "self" interface type='A')
         (parameter_list)
         (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36]
@@ -216,7 +216,7 @@ let sample = """
             (inout_expr implicit type='inout UIButton?'
               (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn4@/Users/yume/git/TypeFill/example/sample.swift:7:36 direct_to_impl
                 (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:7:36 function_ref=unapplied)))))))
-    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36] 'anonname=0x7fb468c92bf8' interface type='(A) -> () -> UIButton?' access=fileprivate @objc get_for=btn4
+    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36] 'anonname=0x7fd96c14d220' interface type='(A) -> () -> UIButton?' access=fileprivate @objc get_for=btn4
       (parameter "self" interface type='A')
       (parameter_list)
       (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36]
@@ -224,7 +224,7 @@ let sample = """
           (load_expr implicit type='UIButton?'
             (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn4@/Users/yume/git/TypeFill/example/sample.swift:7:36 direct_to_storage
               (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:7:36 function_ref=unapplied))))))
-    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36] 'anonname=0x7fb468c92de0' interface type='(A) -> (UIButton?) -> ()' access=fileprivate @objc set_for=btn4
+    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36] 'anonname=0x7fd96c14d408' interface type='(A) -> (UIButton?) -> ()' access=fileprivate @objc set_for=btn4
       (parameter "self" interface type='A')
       (parameter_list
         (parameter "value" interface type='UIButton?') range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36])
@@ -233,7 +233,7 @@ let sample = """
           (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn4@/Users/yume/git/TypeFill/example/sample.swift:7:36 direct_to_storage
             (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:7:36 function_ref=unapplied))
           (declref_expr implicit type='UIButton?' decl=sample.(file).A.<anonymous>.value@/Users/yume/git/TypeFill/example/sample.swift:7:36 function_ref=unapplied))))
-    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36] 'anonname=0x7fb468c92ee8' interface type='(A) -> () -> ()' access=fileprivate _modify_for=btn4
+    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36] 'anonname=0x7fd96c14d510' interface type='(A) -> () -> ()' access=fileprivate _modify_for=btn4
       (parameter "self" interface type='A')
       (parameter_list)
       (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:7:36 - line:7:36]
@@ -249,7 +249,7 @@ let sample = """
         (declref_expr implicit type='(UIButton?.Type) -> UIButton?' decl=Swift.(file).Optional.none [with (substitution_map generic_signature=<Wrapped> (substitution Wrapped -> UIButton))] function_ref=unapplied)
         (type_expr implicit type='UIButton?.Type' typerepr='<<NULL>>')))
     (var_decl range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32] "btn5" type='UIButton?' interface type='UIButton?' access=private @objc readImpl=stored writeImpl=stored readWriteImpl=stored
-      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32] 'anonname=0x7fb468c93128' interface type='(A) -> () -> UIButton?' access=private @objc get_for=btn5
+      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32] 'anonname=0x7fd96c14d750' interface type='(A) -> () -> UIButton?' access=private @objc get_for=btn5
         (parameter "self" interface type='A')
         (parameter_list)
         (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32]
@@ -257,7 +257,7 @@ let sample = """
             (load_expr implicit type='UIButton?'
               (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn5@/Users/yume/git/TypeFill/example/sample.swift:8:32 direct_to_storage
                 (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:8:32 function_ref=unapplied))))))
-      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32] 'anonname=0x7fb468c93310' interface type='(A) -> (UIButton?) -> ()' access=private @objc set_for=btn5
+      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32] 'anonname=0x7fd96c14d938' interface type='(A) -> (UIButton?) -> ()' access=private @objc set_for=btn5
         (parameter "self" interface type='A')
         (parameter_list
           (parameter "value" interface type='UIButton?') range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32])
@@ -266,7 +266,7 @@ let sample = """
             (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn5@/Users/yume/git/TypeFill/example/sample.swift:8:32 direct_to_storage
               (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:8:32 function_ref=unapplied))
             (declref_expr implicit type='UIButton?' decl=sample.(file).A.<anonymous>.value@/Users/yume/git/TypeFill/example/sample.swift:8:32 function_ref=unapplied))))
-      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32] 'anonname=0x7fb468c93418' interface type='(A) -> () -> ()' access=private _modify_for=btn5
+      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32] 'anonname=0x7fd96c14da40' interface type='(A) -> () -> ()' access=private _modify_for=btn5
         (parameter "self" interface type='A')
         (parameter_list)
         (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32]
@@ -274,7 +274,7 @@ let sample = """
             (inout_expr implicit type='inout UIButton?'
               (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn5@/Users/yume/git/TypeFill/example/sample.swift:8:32 direct_to_impl
                 (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:8:32 function_ref=unapplied)))))))
-    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32] 'anonname=0x7fb468c93128' interface type='(A) -> () -> UIButton?' access=private @objc get_for=btn5
+    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32] 'anonname=0x7fd96c14d750' interface type='(A) -> () -> UIButton?' access=private @objc get_for=btn5
       (parameter "self" interface type='A')
       (parameter_list)
       (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32]
@@ -282,7 +282,7 @@ let sample = """
           (load_expr implicit type='UIButton?'
             (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn5@/Users/yume/git/TypeFill/example/sample.swift:8:32 direct_to_storage
               (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:8:32 function_ref=unapplied))))))
-    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32] 'anonname=0x7fb468c93310' interface type='(A) -> (UIButton?) -> ()' access=private @objc set_for=btn5
+    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32] 'anonname=0x7fd96c14d938' interface type='(A) -> (UIButton?) -> ()' access=private @objc set_for=btn5
       (parameter "self" interface type='A')
       (parameter_list
         (parameter "value" interface type='UIButton?') range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32])
@@ -291,7 +291,7 @@ let sample = """
           (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn5@/Users/yume/git/TypeFill/example/sample.swift:8:32 direct_to_storage
             (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:8:32 function_ref=unapplied))
           (declref_expr implicit type='UIButton?' decl=sample.(file).A.<anonymous>.value@/Users/yume/git/TypeFill/example/sample.swift:8:32 function_ref=unapplied))))
-    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32] 'anonname=0x7fb468c93418' interface type='(A) -> () -> ()' access=private _modify_for=btn5
+    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32] 'anonname=0x7fd96c14da40' interface type='(A) -> () -> ()' access=private _modify_for=btn5
       (parameter "self" interface type='A')
       (parameter_list)
       (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:8:32 - line:8:32]
@@ -307,7 +307,7 @@ let sample = """
         (declref_expr implicit type='(UIButton?.Type) -> UIButton?' decl=Swift.(file).Optional.none [with (substitution_map generic_signature=<Wrapped> (substitution Wrapped -> UIButton))] function_ref=unapplied)
         (type_expr implicit type='UIButton?.Type' typerepr='<<NULL>>')))
     (var_decl range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19] "btn6" type='UIButton?' interface type='UIButton?' access=internal @objc readImpl=stored writeImpl=stored readWriteImpl=stored
-      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19] 'anonname=0x7fb46884de60' interface type='(A) -> () -> UIButton?' access=internal @objc get_for=btn6
+      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19] 'anonname=0x7fd96c14dc80' interface type='(A) -> () -> UIButton?' access=internal @objc get_for=btn6
         (parameter "self" interface type='A')
         (parameter_list)
         (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19]
@@ -315,7 +315,7 @@ let sample = """
             (load_expr implicit type='UIButton?'
               (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn6@/Users/yume/git/TypeFill/example/sample.swift:9:19 direct_to_storage
                 (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:9:19 function_ref=unapplied))))))
-      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19] 'anonname=0x7fb46884e048' interface type='(A) -> (UIButton?) -> ()' access=internal @objc set_for=btn6
+      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19] 'anonname=0x7fd96c14de68' interface type='(A) -> (UIButton?) -> ()' access=internal @objc set_for=btn6
         (parameter "self" interface type='A')
         (parameter_list
           (parameter "value" interface type='UIButton?') range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19])
@@ -324,7 +324,7 @@ let sample = """
             (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn6@/Users/yume/git/TypeFill/example/sample.swift:9:19 direct_to_storage
               (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:9:19 function_ref=unapplied))
             (declref_expr implicit type='UIButton?' decl=sample.(file).A.<anonymous>.value@/Users/yume/git/TypeFill/example/sample.swift:9:19 function_ref=unapplied))))
-      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19] 'anonname=0x7fb46884e150' interface type='(A) -> () -> ()' access=internal _modify_for=btn6
+      (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19] 'anonname=0x7fd96c14df70' interface type='(A) -> () -> ()' access=internal _modify_for=btn6
         (parameter "self" interface type='A')
         (parameter_list)
         (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19]
@@ -332,7 +332,7 @@ let sample = """
             (inout_expr implicit type='inout UIButton?'
               (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn6@/Users/yume/git/TypeFill/example/sample.swift:9:19 direct_to_impl
                 (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:9:19 function_ref=unapplied)))))))
-    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19] 'anonname=0x7fb46884de60' interface type='(A) -> () -> UIButton?' access=internal @objc get_for=btn6
+    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19] 'anonname=0x7fd96c14dc80' interface type='(A) -> () -> UIButton?' access=internal @objc get_for=btn6
       (parameter "self" interface type='A')
       (parameter_list)
       (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19]
@@ -340,7 +340,7 @@ let sample = """
           (load_expr implicit type='UIButton?'
             (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn6@/Users/yume/git/TypeFill/example/sample.swift:9:19 direct_to_storage
               (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:9:19 function_ref=unapplied))))))
-    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19] 'anonname=0x7fb46884e048' interface type='(A) -> (UIButton?) -> ()' access=internal @objc set_for=btn6
+    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19] 'anonname=0x7fd96c14de68' interface type='(A) -> (UIButton?) -> ()' access=internal @objc set_for=btn6
       (parameter "self" interface type='A')
       (parameter_list
         (parameter "value" interface type='UIButton?') range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19])
@@ -349,7 +349,7 @@ let sample = """
           (member_ref_expr implicit type='@lvalue UIButton?' decl=sample.(file).A.btn6@/Users/yume/git/TypeFill/example/sample.swift:9:19 direct_to_storage
             (declref_expr implicit type='A' decl=sample.(file).A.<anonymous>.self@/Users/yume/git/TypeFill/example/sample.swift:9:19 function_ref=unapplied))
           (declref_expr implicit type='UIButton?' decl=sample.(file).A.<anonymous>.value@/Users/yume/git/TypeFill/example/sample.swift:9:19 function_ref=unapplied))))
-    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19] 'anonname=0x7fb46884e150' interface type='(A) -> () -> ()' access=internal _modify_for=btn6
+    (accessor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19] 'anonname=0x7fd96c14df70' interface type='(A) -> () -> ()' access=internal _modify_for=btn6
       (parameter "self" interface type='A')
       (parameter_list)
       (brace_stmt implicit range=[/Users/yume/git/TypeFill/example/sample.swift:9:19 - line:9:19]
@@ -362,10 +362,10 @@ let sample = """
       (parameter_list
         (parameter "sender" type='UIButton' interface type='UIButton') range=[/Users/yume/git/TypeFill/example/sample.swift:10:31 - line:10:50])
       (brace_stmt range=[/Users/yume/git/TypeFill/example/sample.swift:10:52 - line:10:53]))
-    (func_decl range=[/Users/yume/git/TypeFill/example/sample.swift:11:5 - line:30:5] "test()" interface type='(A) -> () -> ()' access=internal
+    (func_decl range=[/Users/yume/git/TypeFill/example/sample.swift:11:5 - line:42:5] "test()" interface type='(A) -> () -> ()' access=internal
       (parameter "self" interface type='A')
       (parameter_list range=[/Users/yume/git/TypeFill/example/sample.swift:11:14 - line:11:15])
-      (brace_stmt range=[/Users/yume/git/TypeFill/example/sample.swift:11:17 - line:30:5]
+      (brace_stmt range=[/Users/yume/git/TypeFill/example/sample.swift:11:17 - line:42:5]
         (pattern_binding_decl range=[/Users/yume/git/TypeFill/example/sample.swift:12:9 - line:12:25]
           (pattern_named type='Int' 'default')
           (integer_literal_expr type='Int' location=/Users/yume/git/TypeFill/example/sample.swift:12:25 range=[/Users/yume/git/TypeFill/example/sample.swift:12:25 - line:12:25] value=1 builtin_initializer=Swift.(file).Int.init(_builtinIntegerLiteral:) initializer=**NULL**))
@@ -420,7 +420,7 @@ let sample = """
             (try_expr type='()' location=/Users/yume/git/TypeFill/example/sample.swift:25:22 range=[/Users/yume/git/TypeFill/example/sample.swift:25:13 - line:25:28]
               (call_expr type='()' location=/Users/yume/git/TypeFill/example/sample.swift:25:22 range=[/Users/yume/git/TypeFill/example/sample.swift:25:17 - line:25:28] throws arg_labels=
                 (dot_syntax_call_expr type='() throws -> ()' location=/Users/yume/git/TypeFill/example/sample.swift:25:22 range=[/Users/yume/git/TypeFill/example/sample.swift:25:17 - line:25:22] nothrow
-                  (declref_expr type='(A) -> () throws -> ()' location=/Users/yume/git/TypeFill/example/sample.swift:25:22 range=[/Users/yume/git/TypeFill/example/sample.swift:25:22 - line:25:22] decl=sample.(file).A.error()@/Users/yume/git/TypeFill/example/sample.swift:32:10 function_ref=single)
+                  (declref_expr type='(A) -> () throws -> ()' location=/Users/yume/git/TypeFill/example/sample.swift:25:22 range=[/Users/yume/git/TypeFill/example/sample.swift:25:22 - line:25:22] decl=sample.(file).A.error()@/Users/yume/git/TypeFill/example/sample.swift:44:10 function_ref=single)
                   (declref_expr type='A' location=/Users/yume/git/TypeFill/example/sample.swift:25:17 range=[/Users/yume/git/TypeFill/example/sample.swift:25:17 - line:25:17] decl=sample.(file).A.test().self@/Users/yume/git/TypeFill/example/sample.swift:11:10 function_ref=unapplied))
                 (tuple_expr type='()' location=/Users/yume/git/TypeFill/example/sample.swift:25:27 range=[/Users/yume/git/TypeFill/example/sample.swift:25:27 - line:25:28])))
             (pattern_binding_decl range=[/Users/yume/git/TypeFill/example/sample.swift:26:13 - line:26:23]
@@ -444,14 +444,72 @@ let sample = """
                 (argument_shuffle_expr implicit type='(Any..., separator: String, terminator: String)' location=/Users/yume/git/TypeFill/example/sample.swift:28:19 range=[/Users/yume/git/TypeFill/example/sample.swift:28:18 - line:28:24] scalar_to_tuple elements=[-2, -1, -1] variadic_sources=[0] default_args_owner=Swift.(file).print(_:separator:terminator:)
                   (paren_expr type='(Any)' location=/Users/yume/git/TypeFill/example/sample.swift:28:19 range=[/Users/yume/git/TypeFill/example/sample.swift:28:18 - line:28:24]
                     (open_existential_expr implicit type='Any' location=/Users/yume/git/TypeFill/example/sample.swift:28:19 range=[/Users/yume/git/TypeFill/example/sample.swift:28:19 - line:28:19]
-                      (opaque_value_expr implicit type='Error' location=/Users/yume/git/TypeFill/example/sample.swift:28:19 range=[/Users/yume/git/TypeFill/example/sample.swift:28:19 - line:28:19] @ 0x7fb46885c918)
+                      (opaque_value_expr implicit type='Error' location=/Users/yume/git/TypeFill/example/sample.swift:28:19 range=[/Users/yume/git/TypeFill/example/sample.swift:28:19 - line:28:19] @ 0x7fd96cbcdf48)
                       (declref_expr type='Error' location=/Users/yume/git/TypeFill/example/sample.swift:28:19 range=[/Users/yume/git/TypeFill/example/sample.swift:28:19 - line:28:19] decl=sample.(file).A.test().error@/Users/yume/git/TypeFill/example/sample.swift:27:17 function_ref=unapplied)
                       (erasure_expr implicit type='Any' location=/Users/yume/git/TypeFill/example/sample.swift:28:19 range=[/Users/yume/git/TypeFill/example/sample.swift:28:19 - line:28:19]
-                        (opaque_value_expr implicit type='Error' location=/Users/yume/git/TypeFill/example/sample.swift:28:19 range=[/Users/yume/git/TypeFill/example/sample.swift:28:19 - line:28:19] @ 0x7fb46885c918)))))))))))
-    (func_decl range=[/Users/yume/git/TypeFill/example/sample.swift:32:5 - line:33:5] "error()" interface type='(A) -> () throws -> ()' access=internal
+                        (opaque_value_expr implicit type='Error' location=/Users/yume/git/TypeFill/example/sample.swift:28:19 range=[/Users/yume/git/TypeFill/example/sample.swift:28:19 - line:28:19] @ 0x7fd96cbcdf48)))))))))
+        (pattern_binding_decl range=[/Users/yume/git/TypeFill/example/sample.swift:31:9 - line:33:9]
+          (pattern_typed type='(String, String) -> Int?'
+            (pattern_named type='(String, String) -> Int?' 'h')
+            (type_function
+              (type_tuple
+                (type_ident
+                  (component id='String' bind=Swift.(file).String))
+                (type_ident
+                  (component id='String' bind=Swift.(file).String)))
+))
+          (closure_expr type='(String, String) -> Int?' location=/Users/yume/git/TypeFill/example/sample.swift:31:43 range=[/Users/yume/git/TypeFill/example/sample.swift:31:43 - line:33:9] discriminator=0 escaping single-expression
+            (parameter_list
+              (parameter "$0" type='String' interface type='String')
+              (parameter "$1" type='String' interface type='String') range=[/Users/yume/git/TypeFill/example/sample.swift:31:43 - line:31:43])
+            (call_expr type='Int?' location=/Users/yume/git/TypeFill/example/sample.swift:32:20 range=[/Users/yume/git/TypeFill/example/sample.swift:32:20 - line:32:31] nothrow arg_labels=_:
+              (constructor_ref_call_expr type='(String) -> Int?' location=/Users/yume/git/TypeFill/example/sample.swift:32:20 range=[/Users/yume/git/TypeFill/example/sample.swift:32:20 - line:32:20] nothrow
+                (declref_expr implicit type='(Int.Type) -> (String) -> Int?' location=/Users/yume/git/TypeFill/example/sample.swift:32:20 range=[/Users/yume/git/TypeFill/example/sample.swift:32:20 - line:32:20] decl=Swift.(file).FixedWidthInteger extension.init(_:) [with (substitution_map generic_signature=<Self where Self : FixedWidthInteger> (substitution Self -> Int))] function_ref=single)
+                (type_expr type='Int.Type' location=/Users/yume/git/TypeFill/example/sample.swift:32:20 range=[/Users/yume/git/TypeFill/example/sample.swift:32:20 - line:32:20] typerepr='Int'))
+              (paren_expr type='(String)' location=/Users/yume/git/TypeFill/example/sample.swift:32:27 range=[/Users/yume/git/TypeFill/example/sample.swift:32:23 - line:32:31]
+                (binary_expr type='String' location=/Users/yume/git/TypeFill/example/sample.swift:32:27 range=[/Users/yume/git/TypeFill/example/sample.swift:32:24 - line:32:29] nothrow
+                  (dot_syntax_call_expr implicit type='(String, String) -> String' location=/Users/yume/git/TypeFill/example/sample.swift:32:27 range=[/Users/yume/git/TypeFill/example/sample.swift:32:27 - line:32:27] nothrow
+                    (declref_expr type='(String.Type) -> (String, String) -> String' location=/Users/yume/git/TypeFill/example/sample.swift:32:27 range=[/Users/yume/git/TypeFill/example/sample.swift:32:27 - line:32:27] decl=Swift.(file).String extension.+ function_ref=unapplied)
+                    (type_expr implicit type='String.Type' location=/Users/yume/git/TypeFill/example/sample.swift:32:27 range=[/Users/yume/git/TypeFill/example/sample.swift:32:27 - line:32:27] typerepr='String'))
+                  (tuple_expr implicit type='(String, String)' location=/Users/yume/git/TypeFill/example/sample.swift:32:24 range=[/Users/yume/git/TypeFill/example/sample.swift:32:24 - line:32:29]
+                    (declref_expr type='String' location=/Users/yume/git/TypeFill/example/sample.swift:32:24 range=[/Users/yume/git/TypeFill/example/sample.swift:32:24 - line:32:24] decl=sample.(file).A.test().explicit closure discriminator=0.$0@/Users/yume/git/TypeFill/example/sample.swift:31:43 function_ref=unapplied)
+                    (declref_expr type='String' location=/Users/yume/git/TypeFill/example/sample.swift:32:29 range=[/Users/yume/git/TypeFill/example/sample.swift:32:29 - line:32:29] decl=sample.(file).A.test().explicit closure discriminator=0.$1@/Users/yume/git/TypeFill/example/sample.swift:31:43 function_ref=unapplied)))))))
+
+        (var_decl range=[/Users/yume/git/TypeFill/example/sample.swift:31:13 - line:31:13] "h" type='(String, String) -> Int?' interface type='(String, String) -> Int?' access=private let readImpl=stored immutable)
+
+        (pattern_binding_decl range=[/Users/yume/git/TypeFill/example/sample.swift:35:9 - line:37:9]
+          (pattern_named type='() -> String' 'i')
+          (closure_expr type='() -> String' location=/Users/yume/git/TypeFill/example/sample.swift:35:17 range=[/Users/yume/git/TypeFill/example/sample.swift:35:17 - line:37:9] discriminator=1 escaping single-expression
+            (parameter_list range=[/Users/yume/git/TypeFill/example/sample.swift:35:17 - line:35:17])
+            (string_literal_expr type='String' location=/Users/yume/git/TypeFill/example/sample.swift:36:20 range=[/Users/yume/git/TypeFill/example/sample.swift:36:20 - line:36:20] encoding=utf8 value="" builtin_initializer=Swift.(file).String extension.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:) initializer=**NULL**)))
+
+        (var_decl range=[/Users/yume/git/TypeFill/example/sample.swift:35:13 - line:35:13] "i" type='() -> String' interface type='() -> String' access=private let readImpl=stored immutable)
+
+        (pattern_binding_decl range=[/Users/yume/git/TypeFill/example/sample.swift:39:9 - line:41:9]
+          (pattern_named type='(Int, Int) -> String' 'j')
+          (closure_expr type='(Int, Int) -> String' location=/Users/yume/git/TypeFill/example/sample.swift:39:17 range=[/Users/yume/git/TypeFill/example/sample.swift:39:17 - line:41:9] discriminator=2 escaping single-expression
+            (parameter_list
+              (parameter "a" type='Int' interface type='Int')
+              (parameter "b" type='Int' interface type='Int') range=[/Users/yume/git/TypeFill/example/sample.swift:39:19 - line:39:34])
+            (call_expr type='String' location=/Users/yume/git/TypeFill/example/sample.swift:40:20 range=[/Users/yume/git/TypeFill/example/sample.swift:40:20 - line:40:32] nothrow arg_labels=_:
+              (constructor_ref_call_expr type='(Int) -> String' location=/Users/yume/git/TypeFill/example/sample.swift:40:20 range=[/Users/yume/git/TypeFill/example/sample.swift:40:20 - line:40:20] nothrow
+                (declref_expr implicit type='(String.Type) -> (Int) -> String' location=/Users/yume/git/TypeFill/example/sample.swift:40:20 range=[/Users/yume/git/TypeFill/example/sample.swift:40:20 - line:40:20] decl=Swift.(file).String extension.init(_:) [with (substitution_map generic_signature=<T where T : LosslessStringConvertible> (substitution T -> Int))] function_ref=single)
+                (type_expr type='String.Type' location=/Users/yume/git/TypeFill/example/sample.swift:40:20 range=[/Users/yume/git/TypeFill/example/sample.swift:40:20 - line:40:20] typerepr='String'))
+              (paren_expr type='(Int)' location=/Users/yume/git/TypeFill/example/sample.swift:40:29 range=[/Users/yume/git/TypeFill/example/sample.swift:40:26 - line:40:32]
+                (binary_expr type='Int' location=/Users/yume/git/TypeFill/example/sample.swift:40:29 range=[/Users/yume/git/TypeFill/example/sample.swift:40:27 - line:40:31] nothrow
+                  (dot_syntax_call_expr implicit type='(Int, Int) -> Int' location=/Users/yume/git/TypeFill/example/sample.swift:40:29 range=[/Users/yume/git/TypeFill/example/sample.swift:40:29 - line:40:29] nothrow
+                    (declref_expr type='(Int.Type) -> (Int, Int) -> Int' location=/Users/yume/git/TypeFill/example/sample.swift:40:29 range=[/Users/yume/git/TypeFill/example/sample.swift:40:29 - line:40:29] decl=Swift.(file).Int extension.+ function_ref=unapplied)
+                    (type_expr implicit type='Int.Type' location=/Users/yume/git/TypeFill/example/sample.swift:40:29 range=[/Users/yume/git/TypeFill/example/sample.swift:40:29 - line:40:29] typerepr='Int'))
+                  (tuple_expr implicit type='(Int, Int)' location=/Users/yume/git/TypeFill/example/sample.swift:40:27 range=[/Users/yume/git/TypeFill/example/sample.swift:40:27 - line:40:31]
+                    (declref_expr type='Int' location=/Users/yume/git/TypeFill/example/sample.swift:40:27 range=[/Users/yume/git/TypeFill/example/sample.swift:40:27 - line:40:27] decl=sample.(file).A.test().explicit closure discriminator=2.a@/Users/yume/git/TypeFill/example/sample.swift:39:20 function_ref=unapplied)
+                    (declref_expr type='Int' location=/Users/yume/git/TypeFill/example/sample.swift:40:31 range=[/Users/yume/git/TypeFill/example/sample.swift:40:31 - line:40:31] decl=sample.(file).A.test().explicit closure discriminator=2.b@/Users/yume/git/TypeFill/example/sample.swift:39:28 function_ref=unapplied)))))))
+
+        (var_decl range=[/Users/yume/git/TypeFill/example/sample.swift:39:13 - line:39:13] "j" type='(Int, Int) -> String' interface type='(Int, Int) -> String' access=private let readImpl=stored immutable)
+))
+    (func_decl range=[/Users/yume/git/TypeFill/example/sample.swift:44:5 - line:45:5] "error()" interface type='(A) -> () throws -> ()' access=internal
       (parameter "self" interface type='A')
-      (parameter_list range=[/Users/yume/git/TypeFill/example/sample.swift:32:15 - line:32:16])
-      (brace_stmt range=[/Users/yume/git/TypeFill/example/sample.swift:32:25 - line:33:5]))
+      (parameter_list range=[/Users/yume/git/TypeFill/example/sample.swift:44:15 - line:44:16])
+      (brace_stmt range=[/Users/yume/git/TypeFill/example/sample.swift:44:25 - line:45:5]))
     (constructor_decl implicit range=[/Users/yume/git/TypeFill/example/sample.swift:3:27 - line:3:27] "init(nibName:bundle:)" interface type='(A.Type) -> (String?, Bundle?) -> A' access=internal override=UIKit.(file).UIViewController.init(nibName:bundle:) @objc dynamic designated
       (parameter "self" interface type='A')
       (parameter_list

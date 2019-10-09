@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 class Lexer {
     let input: String
     var index: String.Index
@@ -16,29 +17,22 @@ class Lexer {
         self.index = input.startIndex
     }
 
-    var currentChar: Character? {
+    public final var currentChar: Character? {
         return index < input.endIndex ? input[index] : nil
     }
     
-    private var rest: String {
+    private final var rest: String {
         return String(self.input[self.index...])
     }
     
-    var current: TokenType? {
+    private final var current: TokenType? {
         guard let char = self.currentChar else {
             return nil
         }
         return TokenType(rawValue: char)
     }
 
-    private func advance() {
-        self.index = self.input.index(after: self.index)
-    }
-    private func before() {
-        self.index = self.input.index(before: self.index)
-    }
-    
-    func findNextUntil(_ char: Character) -> String {
+    private final func findNextUntil(_ char: Character) -> String {
         var str = ""
         while let current = currentChar, current != char {
             str.append(current)
@@ -47,7 +41,7 @@ class Lexer {
         return str
     }
     
-    func findNextUntil(chars: [Character]) -> String {
+    private final func findNextUntil(chars: [Character]) -> String {
         var str = ""
         
         while let current = currentChar, !chars.contains(current) {
@@ -55,41 +49,50 @@ class Lexer {
             advance()
         }
         
-//        if let current = currentChar {
-//            str.append(current)
-//            advance()
-//
-//            if let current = currentChar, !chars.contains(current) {
-//                return str + findNextUntil(chars: chars)
-//            }
-//        }
-        
         return str
     }
-
-    func readIdentifierOrNumber() -> String {
+    
+    
+//    static private let identifierOpenChar: [Character] = "([{<".map {$0}
+//    static private let identifierCloseChar: [Character] = ")]}>".map {$0}
+//    static private let identifierChar: [Character] = ".-/:*, ".map {$0} + identifierOpenChar + identifierCloseChar
+    static private let identifierChar: [Character] = ".-()/:*<>,+$@".map {$0}
+    private final func readIdentifierOrNumber() -> String {
         var str = ""
-        while let char = currentChar, char.isAlphanumeric || char == "." || char == "-" {
+        var stack: [Character] = []
+        while let char = currentChar, char.isAlphanumeric || Self.identifierChar.contains(char) {
+            if Character.open.contains(char) {stack.append(char)}
+            if Character.close.contains(char) {
+                if stack.last?.opposite == char {
+                    _ = stack.popLast()
+                } else {
+                    return str
+                }
+            }
             str.append(char)
             advance()
         }
         return str
     }
 
-    var next: Token? {
+    private final var next: Token? {
         // Skip all spaces until a non-space token
-        while let char = currentChar, char.isSpace {
+        while let char = currentChar, char.isSpace || char.isNewLine {
             advance()
         }
         // If we hit the end of the input, then we're done
         guard let _ = currentChar else {
             return nil
         }
-
+        
+        return self.nextTokenType ?? self.nextStringToken
+    }
+    
+    private final var nextTokenType: Token? {
         switch current {
         case .openParen:
             self.advance()
-            return .openParen(type: self.findNextUntil(" "))
+            return .openParen(type: self.findNextUntil(chars: [" ", ")"]))
         case .closeParen:
             self.advance()
             return .closeParen
@@ -105,18 +108,19 @@ class Lexer {
         case .doubleQuote:
             return .attribute(type: self.decodeString(current: TokenType.doubleQuote.rawValue))
         case .none:
-            break
+            return nil
         default:
-            break
+            return nil
         }
-        
+    }
+    
+    private final var nextStringToken: Token {
         let str = readIdentifierOrNumber()
         switch str {
         case "range":
             return .range(range: self.decodeRange())
         case "inherits":
             return .inherits(class: self.decodeInheritsType())
-            
         default:
             if self.currentChar == "=" {
                 return .keyValue(key: str, value: self.decodeKeyValue())
@@ -125,6 +129,23 @@ class Lexer {
         }
     }
     
+    public final func lex() -> [Token] {
+        var toks = [Token]()
+        while let tok = self.next {
+            if case .attribute(let type) = tok, type == "" {
+//                print(self.rest)
+                fatalError()
+            }
+            print(tok)
+            toks.append(tok)
+        }
+        return toks
+    }
+}
+
+
+// MARK: Decode
+extension Lexer {
     /// inherits: UIViewController
     func decodeInheritsType() -> String {
         self.advance() // skip ':'
@@ -143,37 +164,31 @@ class Lexer {
         case .openSquareBracket:
             return "[\(self.decodeString(current: TokenType.closeSquareBracket.rawValue))]"
         default:
-            return self.findNextUntil(" ")
-//            return self.findNextUntil(chars: [" ", ")", "\n"])
+            return self.readIdentifierOrNumber()
+//            return self.findNextUntil(chars: [" ", ")"])
         }
     }
     
     func decodeRange() -> String {
         self.advance() // skip =
-        let result = self.findNextUntil("]")
-        self.advance() // skip last ]
-        return result + "]"
+        defer{ self.advance() } // skip last ]
+        return self.findNextUntil("]") + "]"
     }
 
     func decodeString(current: Character) -> String {
-        self.advance() // skip first "
-        let result = self.findNextUntil(current)
-        self.advance() // skip last "
-        return result
-    }
-    
-    func lex() -> [Token] {
-        var toks = [Token]()
-        while let tok = self.next {
-            if case .attribute(let type) = tok, type == "" {
-//                print(self.rest)
-                fatalError()
-            }
-            print(tok)
-            toks.append(tok)
-        }
-        return toks
+        self.advance() // skip first " or '
+        defer{ self.advance() } // skip last " or '
+        return self.findNextUntil(current)
     }
 }
 
+// MARK: Index move
+extension Lexer {
+    private final func advance() {
+        self.index = self.input.index(after: self.index)
+    }
+    private final func before() {
+        self.index = self.input.index(before: self.index)
+    }
+}
 

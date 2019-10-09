@@ -16,7 +16,7 @@ let package = Package(
             name: "YumeAST",
             dependencies: [
                 // "SwiftAST",
-                "SwiftAST+Tooling"
+                // "SwiftAST+Tooling"
             ]),
         .testTarget(
             name: "astTests",

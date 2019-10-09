@@ -14,7 +14,31 @@ extension Character {
     var isSpace: Bool {
         return isspace(value) != 0
     }
+    
+    var isNewLine: Bool {
+        return self == "\n"
+    }
     var isAlphanumeric: Bool {
         return isalnum(value) != 0 || self == "_"
+    }
+}
+
+extension Character {
+    static var open: [Character] {return "([{<".map {$0} }
+    static var close: [Character] {return ")]}>".map {$0} }
+    var opposite: Character? {
+        switch self {
+        case "(": return ")"
+        case "[": return "]"
+        case "{": return "}"
+        case "<": return ">"
+            
+        case ")": return "("
+        case "]": return "["
+        case "}": return "{"
+        case ">": return "<"
+            
+        default: return nil
+        }
     }
 }
