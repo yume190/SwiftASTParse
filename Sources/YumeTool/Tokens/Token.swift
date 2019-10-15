@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Token {
+public enum Token {
     /// (
     case openParen(type: DECL)
     
@@ -31,3 +31,5 @@ enum Token {
     
     case skip(text: String)
 }
+
+extension Token: Equatable {}

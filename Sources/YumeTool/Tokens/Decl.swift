@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias DECL = String
+public typealias DECL = String
 //enum DECL: String {
 //    
 //}

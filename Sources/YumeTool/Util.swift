@@ -24,8 +24,11 @@ extension Character {
 }
 
 extension Character {
-    static var open: [Character] {return "([{<".map {$0} }
-    static var close: [Character] {return ")]}>".map {$0} }
+    static var open: [Character] {return "([{<\'\"".map {$0} }
+    static var close: [Character] {return ")]}>\'\"".map {$0} }
+//    static private let identifierChar: [Character] = ".-()/:*<>,+$@\'\"?".map {$0}
+//    static var terminate: [Character] {return "=: ".map {$0} + self.close }
+    static var terminate: [Character] {return " ".map {$0} + self.close }
     var opposite: Character? {
         switch self {
         case "(": return ")"
@@ -37,6 +40,9 @@ extension Character {
         case "]": return "["
         case "}": return "{"
         case ">": return "<"
+            
+        case "\'": return self
+        case "\"": return self
             
         default: return nil
         }

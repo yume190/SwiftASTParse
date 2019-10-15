@@ -14,4 +14,7 @@ pp:
 pp2:
 	swift run | grep "))" | grep keyValue
 
-test: openP closeP pp pp2
+stest:
+	swift test | xcpretty
+
+test: stest openP closeP

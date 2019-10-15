@@ -15,11 +15,15 @@ let package = Package(
         .target(
             name: "YumeAST",
             dependencies: [
+                "YumeTool"
                 // "SwiftAST",
                 // "SwiftAST+Tooling"
             ]),
+        .target(
+            name: "YumeTool"
+        ),
         .testTarget(
             name: "astTests",
-            dependencies: ["YumeAST"]),
+            dependencies: ["YumeTool"]),
     ]
 )
