@@ -8,6 +8,3 @@
 import Foundation
 
 public typealias DECL = String
-//enum DECL: String {
-//    
-//}

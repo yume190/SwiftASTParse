@@ -1,0 +1,497 @@
+sil_stage raw
+
+import Builtin
+import Swift
+import SwiftShims
+
+import Foundation
+
+class AAA {
+  @_hasStorage @_hasInitialValue var a: (() -> ())? { get set }
+  @_hasStorage @_hasInitialValue var b: Int { get set }
+  @_hasStorage @_hasInitialValue var c: String { get set }
+  func abc()
+  init()
+  @objc deinit
+}
+
+// main
+sil [ossa] @main : $@convention(c) (Int32, UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>) -> Int32 {
+bb0(%0 : $Int32, %1 : $UnsafeMutablePointer<Optional<UnsafeMutablePointer<Int8>>>):
+  %2 = integer_literal $Builtin.Int32, 0          // user: %3
+  %3 = struct $Int32 (%2 : $Builtin.Int32)        // user: %4
+  return %3 : $Int32                              // id: %4
+} // end sil function 'main'
+
+// variable initialization expression of AAA.a
+sil hidden [transparent] [ossa] @$s7sample23AAAC1ayycSgvpfi : $@convention(thin) () -> @owned Optional<@callee_guaranteed () -> ()> {
+bb0:
+  %0 = metatype $@thin Optional<() -> ()>.Type
+  %1 = enum $Optional<@callee_guaranteed () -> ()>, #Optional.none!enumelt // user: %2
+  return %1 : $Optional<@callee_guaranteed () -> ()> // id: %2
+} // end sil function '$s7sample23AAAC1ayycSgvpfi'
+
+// AAA.a.getter
+sil hidden [transparent] [ossa] @$s7sample23AAAC1ayycSgvg : $@convention(method) (@guaranteed AAA) -> @owned Optional<@callee_guaranteed () -> ()> {
+// %0                                             // users: %2, %1
+bb0(%0 : @guaranteed $AAA):
+  debug_value %0 : $AAA, let, name "self", argno 1 // id: %1
+  %2 = ref_element_addr %0 : $AAA, #AAA.a         // user: %3
+  %3 = begin_access [read] [dynamic] %2 : $*Optional<@callee_guaranteed () -> ()> // users: %5, %4
+  %4 = load [copy] %3 : $*Optional<@callee_guaranteed () -> ()> // user: %6
+  end_access %3 : $*Optional<@callee_guaranteed () -> ()> // id: %5
+  return %4 : $Optional<@callee_guaranteed () -> ()> // id: %6
+} // end sil function '$s7sample23AAAC1ayycSgvg'
+
+// AAA.a.setter
+sil hidden [transparent] [ossa] @$s7sample23AAAC1ayycSgvs : $@convention(method) (@owned Optional<@callee_guaranteed () -> ()>, @guaranteed AAA) -> () {
+// %0                                             // users: %11, %4, %2
+// %1                                             // users: %6, %3
+bb0(%0 : @owned $Optional<@callee_guaranteed () -> ()>, %1 : @guaranteed $AAA):
+  debug_value %0 : $Optional<@callee_guaranteed () -> ()>, let, name "value", argno 1 // id: %2
+  debug_value %1 : $AAA, let, name "self", argno 2 // id: %3
+  %4 = begin_borrow %0 : $Optional<@callee_guaranteed () -> ()> // users: %10, %5
+  %5 = copy_value %4 : $Optional<@callee_guaranteed () -> ()> // user: %8
+  %6 = ref_element_addr %1 : $AAA, #AAA.a         // user: %7
+  %7 = begin_access [modify] [dynamic] %6 : $*Optional<@callee_guaranteed () -> ()> // users: %9, %8
+  assign %5 to %7 : $*Optional<@callee_guaranteed () -> ()> // id: %8
+  end_access %7 : $*Optional<@callee_guaranteed () -> ()> // id: %9
+  end_borrow %4 : $Optional<@callee_guaranteed () -> ()> // id: %10
+  destroy_value %0 : $Optional<@callee_guaranteed () -> ()> // id: %11
+  %12 = tuple ()                                  // user: %13
+  return %12 : $()                                // id: %13
+} // end sil function '$s7sample23AAAC1ayycSgvs'
+
+// AAA.a.modify
+sil hidden [transparent] [ossa] @$s7sample23AAAC1ayycSgvM : $@yield_once @convention(method) (@guaranteed AAA) -> @yields @inout Optional<@callee_guaranteed () -> ()> {
+// %0                                             // users: %2, %1
+bb0(%0 : @guaranteed $AAA):
+  debug_value %0 : $AAA, let, name "self", argno 1 // id: %1
+  %2 = ref_element_addr %0 : $AAA, #AAA.a         // user: %3
+  %3 = begin_access [modify] [dynamic] %2 : $*Optional<@callee_guaranteed () -> ()> // users: %5, %8, %4
+  yield %3 : $*Optional<@callee_guaranteed () -> ()>, resume bb1, unwind bb2 // id: %4
+
+bb1:                                              // Preds: bb0
+  end_access %3 : $*Optional<@callee_guaranteed () -> ()> // id: %5
+  %6 = tuple ()                                   // user: %7
+  return %6 : $()                                 // id: %7
+
+bb2:                                              // Preds: bb0
+  end_access %3 : $*Optional<@callee_guaranteed () -> ()> // id: %8
+  unwind                                          // id: %9
+} // end sil function '$s7sample23AAAC1ayycSgvM'
+
+// variable initialization expression of AAA.b
+sil hidden [transparent] [ossa] @$s7sample23AAAC1bSivpfi : $@convention(thin) () -> Int {
+bb0:
+  %0 = integer_literal $Builtin.IntLiteral, 0     // user: %3
+  %1 = metatype $@thin Int.Type                   // user: %3
+  // function_ref Int.init(_builtinIntegerLiteral:)
+  %2 = function_ref @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %3
+  %3 = apply %2(%0, %1) : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %4
+  return %3 : $Int                                // id: %4
+} // end sil function '$s7sample23AAAC1bSivpfi'
+
+// Int.init(_builtinIntegerLiteral:)
+sil [transparent] [serialized] @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int
+
+// AAA.b.getter
+sil hidden [transparent] [ossa] @$s7sample23AAAC1bSivg : $@convention(method) (@guaranteed AAA) -> Int {
+// %0                                             // users: %2, %1
+bb0(%0 : @guaranteed $AAA):
+  debug_value %0 : $AAA, let, name "self", argno 1 // id: %1
+  %2 = ref_element_addr %0 : $AAA, #AAA.b         // user: %3
+  %3 = begin_access [read] [dynamic] %2 : $*Int   // users: %5, %4
+  %4 = load [trivial] %3 : $*Int                  // user: %6
+  end_access %3 : $*Int                           // id: %5
+  return %4 : $Int                                // id: %6
+} // end sil function '$s7sample23AAAC1bSivg'
+
+// AAA.b.setter
+sil hidden [transparent] [ossa] @$s7sample23AAAC1bSivs : $@convention(method) (Int, @guaranteed AAA) -> () {
+// %0                                             // users: %6, %2
+// %1                                             // users: %4, %3
+bb0(%0 : $Int, %1 : @guaranteed $AAA):
+  debug_value %0 : $Int, let, name "value", argno 1 // id: %2
+  debug_value %1 : $AAA, let, name "self", argno 2 // id: %3
+  %4 = ref_element_addr %1 : $AAA, #AAA.b         // user: %5
+  %5 = begin_access [modify] [dynamic] %4 : $*Int // users: %7, %6
+  assign %0 to %5 : $*Int                         // id: %6
+  end_access %5 : $*Int                           // id: %7
+  %8 = tuple ()                                   // user: %9
+  return %8 : $()                                 // id: %9
+} // end sil function '$s7sample23AAAC1bSivs'
+
+// AAA.b.modify
+sil hidden [transparent] [ossa] @$s7sample23AAAC1bSivM : $@yield_once @convention(method) (@guaranteed AAA) -> @yields @inout Int {
+// %0                                             // users: %2, %1
+bb0(%0 : @guaranteed $AAA):
+  debug_value %0 : $AAA, let, name "self", argno 1 // id: %1
+  %2 = ref_element_addr %0 : $AAA, #AAA.b         // user: %3
+  %3 = begin_access [modify] [dynamic] %2 : $*Int // users: %5, %8, %4
+  yield %3 : $*Int, resume bb1, unwind bb2        // id: %4
+
+bb1:                                              // Preds: bb0
+  end_access %3 : $*Int                           // id: %5
+  %6 = tuple ()                                   // user: %7
+  return %6 : $()                                 // id: %7
+
+bb2:                                              // Preds: bb0
+  end_access %3 : $*Int                           // id: %8
+  unwind                                          // id: %9
+} // end sil function '$s7sample23AAAC1bSivM'
+
+// variable initialization expression of AAA.c
+sil hidden [transparent] [ossa] @$s7sample23AAAC1cSSvpfi : $@convention(thin) () -> @owned String {
+bb0:
+  %0 = string_literal utf8 ""                     // user: %5
+  %1 = integer_literal $Builtin.Word, 0           // user: %5
+  %2 = integer_literal $Builtin.Int1, -1          // user: %5
+  %3 = metatype $@thin String.Type                // user: %5
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %4 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %5
+  %5 = apply %4(%0, %1, %2, %3) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %6
+  return %5 : $String                             // id: %6
+} // end sil function '$s7sample23AAAC1cSSvpfi'
+
+// String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+sil [serialized] [always_inline] [readonly] [_semantics "string.makeUTF8"] @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String
+
+// AAA.c.getter
+sil hidden [transparent] [ossa] @$s7sample23AAAC1cSSvg : $@convention(method) (@guaranteed AAA) -> @owned String {
+// %0                                             // users: %2, %1
+bb0(%0 : @guaranteed $AAA):
+  debug_value %0 : $AAA, let, name "self", argno 1 // id: %1
+  %2 = ref_element_addr %0 : $AAA, #AAA.c         // user: %3
+  %3 = begin_access [read] [dynamic] %2 : $*String // users: %5, %4
+  %4 = load [copy] %3 : $*String                  // user: %6
+  end_access %3 : $*String                        // id: %5
+  return %4 : $String                             // id: %6
+} // end sil function '$s7sample23AAAC1cSSvg'
+
+// AAA.c.setter
+sil hidden [transparent] [ossa] @$s7sample23AAAC1cSSvs : $@convention(method) (@owned String, @guaranteed AAA) -> () {
+// %0                                             // users: %11, %4, %2
+// %1                                             // users: %6, %3
+bb0(%0 : @owned $String, %1 : @guaranteed $AAA):
+  debug_value %0 : $String, let, name "value", argno 1 // id: %2
+  debug_value %1 : $AAA, let, name "self", argno 2 // id: %3
+  %4 = begin_borrow %0 : $String                  // users: %10, %5
+  %5 = copy_value %4 : $String                    // user: %8
+  %6 = ref_element_addr %1 : $AAA, #AAA.c         // user: %7
+  %7 = begin_access [modify] [dynamic] %6 : $*String // users: %9, %8
+  assign %5 to %7 : $*String                      // id: %8
+  end_access %7 : $*String                        // id: %9
+  end_borrow %4 : $String                         // id: %10
+  destroy_value %0 : $String                      // id: %11
+  %12 = tuple ()                                  // user: %13
+  return %12 : $()                                // id: %13
+} // end sil function '$s7sample23AAAC1cSSvs'
+
+// AAA.c.modify
+sil hidden [transparent] [ossa] @$s7sample23AAAC1cSSvM : $@yield_once @convention(method) (@guaranteed AAA) -> @yields @inout String {
+// %0                                             // users: %2, %1
+bb0(%0 : @guaranteed $AAA):
+  debug_value %0 : $AAA, let, name "self", argno 1 // id: %1
+  %2 = ref_element_addr %0 : $AAA, #AAA.c         // user: %3
+  %3 = begin_access [modify] [dynamic] %2 : $*String // users: %5, %8, %4
+  yield %3 : $*String, resume bb1, unwind bb2     // id: %4
+
+bb1:                                              // Preds: bb0
+  end_access %3 : $*String                        // id: %5
+  %6 = tuple ()                                   // user: %7
+  return %6 : $()                                 // id: %7
+
+bb2:                                              // Preds: bb0
+  end_access %3 : $*String                        // id: %8
+  unwind                                          // id: %9
+} // end sil function '$s7sample23AAAC1cSSvM'
+
+// AAA.abc()
+sil hidden [ossa] @$s7sample23AAAC3abcyyF : $@convention(method) (@guaranteed AAA) -> () {
+// %0                                             // users: %32, %31, %22, %19, %18, %13, %10, %4, %1
+bb0(%0 : @guaranteed $AAA):
+  debug_value %0 : $AAA, let, name "self", argno 1 // id: %1
+  %2 = alloc_box ${ var @sil_weak Optional<AAA> }, var, name "_self" // users: %35, %14, %3
+  %3 = project_box %2 : ${ var @sil_weak Optional<AAA> }, 0 // users: %15, %6
+  %4 = copy_value %0 : $AAA                       // user: %5
+  %5 = enum $Optional<AAA>, #Optional.some!enumelt.1, %4 : $AAA // users: %7, %6
+  store_weak %5 to [initialization] %3 : $*@sil_weak Optional<AAA> // id: %6
+  destroy_value %5 : $Optional<AAA>               // id: %7
+  %8 = alloc_box ${ var AAA }, var, name "__self" // users: %34, %9
+  %9 = project_box %8 : ${ var AAA }, 0           // user: %11
+  %10 = copy_value %0 : $AAA                      // user: %11
+  store %10 to [init] %9 : $*AAA                  // id: %11
+  // function_ref closure #1 in AAA.abc()
+  %12 = function_ref @$s7sample23AAAC3abcyyFyycfU_ : $@convention(thin) (@guaranteed AAA, @guaranteed { var @sil_weak Optional<AAA> }) -> () // user: %16
+  %13 = copy_value %0 : $AAA                      // user: %16
+  %14 = copy_value %2 : ${ var @sil_weak Optional<AAA> } // user: %16
+  mark_function_escape %3 : $*@sil_weak Optional<AAA> // id: %15
+  %16 = partial_apply [callee_guaranteed] %12(%13, %14) : $@convention(thin) (@guaranteed AAA, @guaranteed { var @sil_weak Optional<AAA> }) -> () // user: %17
+  %17 = enum $Optional<@callee_guaranteed () -> ()>, #Optional.some!enumelt.1, %16 : $@callee_guaranteed () -> () // user: %19
+  %18 = class_method %0 : $AAA, #AAA.a!setter.1 : (AAA) -> ((() -> ())?) -> (), $@convention(method) (@owned Optional<@callee_guaranteed () -> ()>, @guaranteed AAA) -> () // user: %19
+  %19 = apply %18(%17, %0) : $@convention(method) (@owned Optional<@callee_guaranteed () -> ()>, @guaranteed AAA) -> ()
+  %20 = alloc_box ${ var @sil_weak Optional<AAA> }, var, name "self" // users: %33, %27, %21
+  %21 = project_box %20 : ${ var @sil_weak Optional<AAA> }, 0 // users: %28, %24
+  %22 = copy_value %0 : $AAA                      // user: %23
+  %23 = enum $Optional<AAA>, #Optional.some!enumelt.1, %22 : $AAA // users: %25, %24
+  store_weak %23 to [initialization] %21 : $*@sil_weak Optional<AAA> // id: %24
+  destroy_value %23 : $Optional<AAA>              // id: %25
+  // function_ref closure #2 in AAA.abc()
+  %26 = function_ref @$s7sample23AAAC3abcyyFyycfU0_ : $@convention(thin) (@guaranteed { var @sil_weak Optional<AAA> }) -> () // user: %29
+  %27 = copy_value %20 : ${ var @sil_weak Optional<AAA> } // user: %29
+  mark_function_escape %21 : $*@sil_weak Optional<AAA> // id: %28
+  %29 = partial_apply [callee_guaranteed] %26(%27) : $@convention(thin) (@guaranteed { var @sil_weak Optional<AAA> }) -> () // user: %30
+  %30 = enum $Optional<@callee_guaranteed () -> ()>, #Optional.some!enumelt.1, %29 : $@callee_guaranteed () -> () // user: %32
+  %31 = class_method %0 : $AAA, #AAA.a!setter.1 : (AAA) -> ((() -> ())?) -> (), $@convention(method) (@owned Optional<@callee_guaranteed () -> ()>, @guaranteed AAA) -> () // user: %32
+  %32 = apply %31(%30, %0) : $@convention(method) (@owned Optional<@callee_guaranteed () -> ()>, @guaranteed AAA) -> ()
+  destroy_value %20 : ${ var @sil_weak Optional<AAA> } // id: %33
+  destroy_value %8 : ${ var AAA }                 // id: %34
+  destroy_value %2 : ${ var @sil_weak Optional<AAA> } // id: %35
+  %36 = tuple ()                                  // user: %37
+  return %36 : $()                                // id: %37
+} // end sil function '$s7sample23AAAC3abcyyF'
+
+// closure #1 in AAA.abc()
+sil private [ossa] @$s7sample23AAAC3abcyyFyycfU_ : $@convention(thin) (@guaranteed AAA, @guaranteed { var @sil_weak Optional<AAA> }) -> () {
+// %0                                             // users: %10, %9, %2
+// %1                                             // user: %3
+bb0(%0 : @guaranteed $AAA, %1 : @guaranteed ${ var @sil_weak Optional<AAA> }):
+  debug_value %0 : $AAA, let, name "self", argno 1 // id: %2
+  %3 = project_box %1 : ${ var @sil_weak Optional<AAA> }, 0 // users: %11, %4
+  debug_value_addr %3 : $*@sil_weak Optional<AAA>, var, name "_self", argno 2 // id: %4
+  %5 = integer_literal $Builtin.IntLiteral, 11    // user: %8
+  %6 = metatype $@thin Int.Type                   // user: %8
+  // function_ref Int.init(_builtinIntegerLiteral:)
+  %7 = function_ref @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %8
+  %8 = apply %7(%5, %6) : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %10
+  %9 = class_method %0 : $AAA, #AAA.b!setter.1 : (AAA) -> (Int) -> (), $@convention(method) (Int, @guaranteed AAA) -> () // user: %10
+  %10 = apply %9(%8, %0) : $@convention(method) (Int, @guaranteed AAA) -> ()
+  %11 = begin_access [read] [unknown] %3 : $*@sil_weak Optional<AAA> // users: %26, %21, %13
+  %12 = alloc_stack $Optional<AAA>                // users: %36, %25, %23, %20, %19, %17, %14
+  %13 = load_weak %11 : $*@sil_weak Optional<AAA> // user: %14
+  store %13 to [init] %12 : $*Optional<AAA>       // id: %14
+  %15 = integer_literal $Builtin.Int1, -1         // user: %17
+  %16 = integer_literal $Builtin.Int1, 0          // user: %17
+  %17 = select_enum_addr %12 : $*Optional<AAA>, case #Optional.some!enumelt.1: %15, default %16 : $Builtin.Int1 // user: %18
+  cond_br %17, bb2, bb1                           // id: %18
+
+bb1:                                              // Preds: bb0
+  destroy_addr %12 : $*Optional<AAA>              // id: %19
+  dealloc_stack %12 : $*Optional<AAA>             // id: %20
+  end_access %11 : $*@sil_weak Optional<AAA>      // id: %21
+  br bb4                                          // id: %22
+
+bb2:                                              // Preds: bb0
+  %23 = unchecked_take_enum_data_addr %12 : $*Optional<AAA>, #Optional.some!enumelt.1 // user: %24
+  %24 = load [copy] %23 : $*AAA                   // users: %35, %34, %33
+  destroy_addr %12 : $*Optional<AAA>              // id: %25
+  end_access %11 : $*@sil_weak Optional<AAA>      // id: %26
+  %27 = string_literal utf8 "aa"                  // user: %32
+  %28 = integer_literal $Builtin.Word, 2          // user: %32
+  %29 = integer_literal $Builtin.Int1, -1         // user: %32
+  %30 = metatype $@thin String.Type               // user: %32
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %31 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %32
+  %32 = apply %31(%27, %28, %29, %30) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %34
+  %33 = class_method %24 : $AAA, #AAA.c!setter.1 : (AAA) -> (String) -> (), $@convention(method) (@owned String, @guaranteed AAA) -> () // user: %34
+  %34 = apply %33(%32, %24) : $@convention(method) (@owned String, @guaranteed AAA) -> ()
+  destroy_value %24 : $AAA                        // id: %35
+  dealloc_stack %12 : $*Optional<AAA>             // id: %36
+  %37 = tuple ()                                  // user: %38
+  %38 = enum $Optional<()>, #Optional.some!enumelt.1, %37 : $() // user: %39
+  br bb3(%38 : $Optional<()>)                     // id: %39
+
+bb3(%40 : $Optional<()>):                         // Preds: bb4 bb2
+  %41 = tuple ()                                  // user: %42
+  return %41 : $()                                // id: %42
+
+bb4:                                              // Preds: bb1
+  %43 = enum $Optional<()>, #Optional.none!enumelt // user: %44
+  br bb3(%43 : $Optional<()>)                     // id: %44
+} // end sil function '$s7sample23AAAC3abcyyFyycfU_'
+
+// closure #2 in AAA.abc()
+sil private [ossa] @$s7sample23AAAC3abcyyFyycfU0_ : $@convention(thin) (@guaranteed { var @sil_weak Optional<AAA> }) -> () {
+// %0                                             // user: %1
+bb0(%0 : @guaranteed ${ var @sil_weak Optional<AAA> }):
+  %1 = project_box %0 : ${ var @sil_weak Optional<AAA> }, 0 // users: %31, %3, %2
+  debug_value_addr %1 : $*@sil_weak Optional<AAA>, var, name "self", argno 1 // id: %2
+  %3 = begin_access [read] [unknown] %1 : $*@sil_weak Optional<AAA> // users: %18, %13, %5
+  %4 = alloc_stack $Optional<AAA>                 // users: %26, %17, %15, %12, %11, %9, %6
+  %5 = load_weak %3 : $*@sil_weak Optional<AAA>   // user: %6
+  store %5 to [init] %4 : $*Optional<AAA>         // id: %6
+  %7 = integer_literal $Builtin.Int1, -1          // user: %9
+  %8 = integer_literal $Builtin.Int1, 0           // user: %9
+  %9 = select_enum_addr %4 : $*Optional<AAA>, case #Optional.some!enumelt.1: %7, default %8 : $Builtin.Int1 // user: %10
+  cond_br %9, bb2, bb1                            // id: %10
+
+bb1:                                              // Preds: bb0
+  destroy_addr %4 : $*Optional<AAA>               // id: %11
+  dealloc_stack %4 : $*Optional<AAA>              // id: %12
+  end_access %3 : $*@sil_weak Optional<AAA>       // id: %13
+  br bb8                                          // id: %14
+
+bb2:                                              // Preds: bb0
+  %15 = unchecked_take_enum_data_addr %4 : $*Optional<AAA>, #Optional.some!enumelt.1 // user: %16
+  %16 = load [copy] %15 : $*AAA                   // users: %25, %24, %23
+  destroy_addr %4 : $*Optional<AAA>               // id: %17
+  end_access %3 : $*@sil_weak Optional<AAA>       // id: %18
+  %19 = integer_literal $Builtin.IntLiteral, 22   // user: %22
+  %20 = metatype $@thin Int.Type                  // user: %22
+  // function_ref Int.init(_builtinIntegerLiteral:)
+  %21 = function_ref @$sSi22_builtinIntegerLiteralSiBI_tcfC : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %22
+  %22 = apply %21(%19, %20) : $@convention(method) (Builtin.IntLiteral, @thin Int.Type) -> Int // user: %24
+  %23 = class_method %16 : $AAA, #AAA.b!setter.1 : (AAA) -> (Int) -> (), $@convention(method) (Int, @guaranteed AAA) -> () // user: %24
+  %24 = apply %23(%22, %16) : $@convention(method) (Int, @guaranteed AAA) -> ()
+  destroy_value %16 : $AAA                        // id: %25
+  dealloc_stack %4 : $*Optional<AAA>              // id: %26
+  %27 = tuple ()                                  // user: %28
+  %28 = enum $Optional<()>, #Optional.some!enumelt.1, %27 : $() // user: %29
+  br bb3(%28 : $Optional<()>)                     // id: %29
+
+bb3(%30 : $Optional<()>):                         // Preds: bb8 bb2
+  %31 = begin_access [read] [unknown] %1 : $*@sil_weak Optional<AAA> // users: %46, %41, %33
+  %32 = alloc_stack $Optional<AAA>                // users: %56, %45, %43, %40, %39, %37, %34
+  %33 = load_weak %31 : $*@sil_weak Optional<AAA> // user: %34
+  store %33 to [init] %32 : $*Optional<AAA>       // id: %34
+  %35 = integer_literal $Builtin.Int1, -1         // user: %37
+  %36 = integer_literal $Builtin.Int1, 0          // user: %37
+  %37 = select_enum_addr %32 : $*Optional<AAA>, case #Optional.some!enumelt.1: %35, default %36 : $Builtin.Int1 // user: %38
+  cond_br %37, bb5, bb4                           // id: %38
+
+bb4:                                              // Preds: bb3
+  destroy_addr %32 : $*Optional<AAA>              // id: %39
+  dealloc_stack %32 : $*Optional<AAA>             // id: %40
+  end_access %31 : $*@sil_weak Optional<AAA>      // id: %41
+  br bb7                                          // id: %42
+
+bb5:                                              // Preds: bb3
+  %43 = unchecked_take_enum_data_addr %32 : $*Optional<AAA>, #Optional.some!enumelt.1 // user: %44
+  %44 = load [copy] %43 : $*AAA                   // users: %55, %54, %53
+  destroy_addr %32 : $*Optional<AAA>              // id: %45
+  end_access %31 : $*@sil_weak Optional<AAA>      // id: %46
+  %47 = string_literal utf8 "bb"                  // user: %52
+  %48 = integer_literal $Builtin.Word, 2          // user: %52
+  %49 = integer_literal $Builtin.Int1, -1         // user: %52
+  %50 = metatype $@thin String.Type               // user: %52
+  // function_ref String.init(_builtinStringLiteral:utf8CodeUnitCount:isASCII:)
+  %51 = function_ref @$sSS21_builtinStringLiteral17utf8CodeUnitCount7isASCIISSBp_BwBi1_tcfC : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %52
+  %52 = apply %51(%47, %48, %49, %50) : $@convention(method) (Builtin.RawPointer, Builtin.Word, Builtin.Int1, @thin String.Type) -> @owned String // user: %54
+  %53 = class_method %44 : $AAA, #AAA.c!setter.1 : (AAA) -> (String) -> (), $@convention(method) (@owned String, @guaranteed AAA) -> () // user: %54
+  %54 = apply %53(%52, %44) : $@convention(method) (@owned String, @guaranteed AAA) -> ()
+  destroy_value %44 : $AAA                        // id: %55
+  dealloc_stack %32 : $*Optional<AAA>             // id: %56
+  %57 = tuple ()                                  // user: %58
+  %58 = enum $Optional<()>, #Optional.some!enumelt.1, %57 : $() // user: %59
+  br bb6(%58 : $Optional<()>)                     // id: %59
+
+bb6(%60 : $Optional<()>):                         // Preds: bb7 bb5
+  %61 = tuple ()                                  // user: %62
+  return %61 : $()                                // id: %62
+
+bb7:                                              // Preds: bb4
+  %63 = enum $Optional<()>, #Optional.none!enumelt // user: %64
+  br bb6(%63 : $Optional<()>)                     // id: %64
+
+bb8:                                              // Preds: bb1
+  %65 = enum $Optional<()>, #Optional.none!enumelt // user: %66
+  br bb3(%65 : $Optional<()>)                     // id: %66
+} // end sil function '$s7sample23AAAC3abcyyFyycfU0_'
+
+// AAA.__allocating_init()
+sil hidden [ossa] @$s7sample23AAACACycfC : $@convention(method) (@thick AAA.Type) -> @owned AAA {
+bb0(%0 : $@thick AAA.Type):
+  %1 = alloc_ref $AAA                             // user: %3
+  // function_ref AAA.init()
+  %2 = function_ref @$s7sample23AAACACycfc : $@convention(method) (@owned AAA) -> @owned AAA // user: %3
+  %3 = apply %2(%1) : $@convention(method) (@owned AAA) -> @owned AAA // user: %4
+  return %3 : $AAA                                // id: %4
+} // end sil function '$s7sample23AAACACycfC'
+
+// AAA.init()
+sil hidden [ossa] @$s7sample23AAACACycfc : $@convention(method) (@owned AAA) -> @owned AAA {
+// %0                                             // users: %2, %1
+bb0(%0 : @owned $AAA):
+  debug_value %0 : $AAA, let, name "self", argno 1 // id: %1
+  %2 = mark_uninitialized [rootself] %0 : $AAA    // users: %28, %27, %21, %13, %5
+  // function_ref variable initialization expression of AAA.a
+  %3 = function_ref @$s7sample23AAAC1ayycSgvpfi : $@convention(thin) () -> @owned Optional<@callee_guaranteed () -> ()> // user: %4
+  %4 = apply %3() : $@convention(thin) () -> @owned Optional<@callee_guaranteed () -> ()> // user: %8
+  %5 = begin_borrow %2 : $AAA                     // users: %10, %6
+  %6 = ref_element_addr %5 : $AAA, #AAA.a         // user: %7
+  %7 = begin_access [modify] [dynamic] %6 : $*Optional<@callee_guaranteed () -> ()> // users: %9, %8
+  assign %4 to %7 : $*Optional<@callee_guaranteed () -> ()> // id: %8
+  end_access %7 : $*Optional<@callee_guaranteed () -> ()> // id: %9
+  end_borrow %5 : $AAA                            // id: %10
+  // function_ref variable initialization expression of AAA.b
+  %11 = function_ref @$s7sample23AAAC1bSivpfi : $@convention(thin) () -> Int // user: %12
+  %12 = apply %11() : $@convention(thin) () -> Int // user: %16
+  %13 = begin_borrow %2 : $AAA                    // users: %18, %14
+  %14 = ref_element_addr %13 : $AAA, #AAA.b       // user: %15
+  %15 = begin_access [modify] [dynamic] %14 : $*Int // users: %17, %16
+  assign %12 to %15 : $*Int                       // id: %16
+  end_access %15 : $*Int                          // id: %17
+  end_borrow %13 : $AAA                           // id: %18
+  // function_ref variable initialization expression of AAA.c
+  %19 = function_ref @$s7sample23AAAC1cSSvpfi : $@convention(thin) () -> @owned String // user: %20
+  %20 = apply %19() : $@convention(thin) () -> @owned String // user: %24
+  %21 = begin_borrow %2 : $AAA                    // users: %26, %22
+  %22 = ref_element_addr %21 : $AAA, #AAA.c       // user: %23
+  %23 = begin_access [modify] [dynamic] %22 : $*String // users: %25, %24
+  assign %20 to %23 : $*String                    // id: %24
+  end_access %23 : $*String                       // id: %25
+  end_borrow %21 : $AAA                           // id: %26
+  %27 = copy_value %2 : $AAA                      // user: %29
+  destroy_value %2 : $AAA                         // id: %28
+  return %27 : $AAA                               // id: %29
+} // end sil function '$s7sample23AAACACycfc'
+
+// AAA.deinit
+sil hidden [ossa] @$s7sample23AAACfd : $@convention(method) (@guaranteed AAA) -> @owned Builtin.NativeObject {
+// %0                                             // users: %6, %4, %2, %1
+bb0(%0 : @guaranteed $AAA):
+  debug_value %0 : $AAA, let, name "self", argno 1 // id: %1
+  %2 = ref_element_addr %0 : $AAA, #AAA.a         // user: %3
+  destroy_addr %2 : $*Optional<@callee_guaranteed () -> ()> // id: %3
+  %4 = ref_element_addr %0 : $AAA, #AAA.c         // user: %5
+  destroy_addr %4 : $*String                      // id: %5
+  %6 = unchecked_ref_cast %0 : $AAA to $Builtin.NativeObject // user: %7
+  %7 = unchecked_ownership_conversion %6 : $Builtin.NativeObject, @guaranteed to @owned // user: %8
+  return %7 : $Builtin.NativeObject               // id: %8
+} // end sil function '$s7sample23AAACfd'
+
+// AAA.__deallocating_deinit
+sil hidden [ossa] @$s7sample23AAACfD : $@convention(method) (@owned AAA) -> () {
+// %0                                             // users: %6, %3, %1
+bb0(%0 : @owned $AAA):
+  debug_value %0 : $AAA, let, name "self", argno 1 // id: %1
+  // function_ref AAA.deinit
+  %2 = function_ref @$s7sample23AAACfd : $@convention(method) (@guaranteed AAA) -> @owned Builtin.NativeObject // user: %4
+  %3 = begin_borrow %0 : $AAA                     // users: %5, %4
+  %4 = apply %2(%3) : $@convention(method) (@guaranteed AAA) -> @owned Builtin.NativeObject // user: %7
+  end_borrow %3 : $AAA                            // id: %5
+  end_lifetime %0 : $AAA                          // id: %6
+  %7 = unchecked_ref_cast %4 : $Builtin.NativeObject to $AAA // user: %8
+  dealloc_ref %7 : $AAA                           // id: %8
+  %9 = tuple ()                                   // user: %10
+  return %9 : $()                                 // id: %10
+} // end sil function '$s7sample23AAACfD'
+
+sil_vtable AAA {
+  #AAA.a!getter.1: (AAA) -> () -> (() -> ())? : @$s7sample23AAAC1ayycSgvg	// AAA.a.getter
+  #AAA.a!setter.1: (AAA) -> ((() -> ())?) -> () : @$s7sample23AAAC1ayycSgvs	// AAA.a.setter
+  #AAA.a!modify.1: (AAA) -> () -> () : @$s7sample23AAAC1ayycSgvM	// AAA.a.modify
+  #AAA.b!getter.1: (AAA) -> () -> Int : @$s7sample23AAAC1bSivg	// AAA.b.getter
+  #AAA.b!setter.1: (AAA) -> (Int) -> () : @$s7sample23AAAC1bSivs	// AAA.b.setter
+  #AAA.b!modify.1: (AAA) -> () -> () : @$s7sample23AAAC1bSivM	// AAA.b.modify
+  #AAA.c!getter.1: (AAA) -> () -> String : @$s7sample23AAAC1cSSvg	// AAA.c.getter
+  #AAA.c!setter.1: (AAA) -> (String) -> () : @$s7sample23AAAC1cSSvs	// AAA.c.setter
+  #AAA.c!modify.1: (AAA) -> () -> () : @$s7sample23AAAC1cSSvM	// AAA.c.modify
+  #AAA.abc!1: (AAA) -> () -> () : @$s7sample23AAAC3abcyyF	// AAA.abc()
+  #AAA.init!allocator.1: (AAA.Type) -> () -> AAA : @$s7sample23AAACACycfC	// AAA.__allocating_init()
+  #AAA.deinit!deallocator.1: @$s7sample23AAACfD	// AAA.__deallocating_deinit
+}
+
+
+

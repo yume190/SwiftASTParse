@@ -10,5 +10,4 @@ import Foundation
 enum Keyword: String {
     case range
     case inherits
-    
 }

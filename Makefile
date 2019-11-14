@@ -1,9 +1,16 @@
 ast:
-	swiftc -dump-ast \
-	-sdk `xcrun --show-sdk-path --sdk iphonesimulator` \
-	-target x86_64-apple-ios12.0-simulator \
-	-suppress-warnings \
-	/Users/yume/git/TypeFill/example/sample.swift 
+	@swiftc -dump-ast \
+		-sdk `xcrun --show-sdk-path --sdk iphonesimulator` \
+		-target x86_64-apple-ios12.0-simulator \
+		-suppress-warnings \
+		sample.swift 
+
+ast2:
+	@swiftc -dump-ast \
+		-sdk `xcrun --show-sdk-path --sdk iphonesimulator` \
+		-target x86_64-apple-ios12.0-simulator \
+		-suppress-warnings \
+		sample2.swift 
 
 openP:
 	swift run | grep openParen | wc -l
